@@ -8,22 +8,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/style.css">
+    <script src="Javascript.js" ></script>
 </head>
 <body>
 
     <main class="container">
-        <div class="conteudo-formulario">
+        <!-- <div class="conteudo-formulario">
             <header>
                 <h1>Finalizar Compra</h1>
                 <p>Preencha seus dados para concluir o pedido.</p>
-            </header>
-
+            </header> -->
+            <!-- SEÇÃO CADASTRO DO CLIENTE
             <form id="checkout-formulario">
                 <section class="secao-formulario">
                     <h2>1. Contato e Identificação</h2>
                     <div class="grupo-formulario">
                         <label for="email">E-mail</label>
                         <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                         <div id="emailSuggestions" class="emailSuggestions"></div> 
                     </div>
                     <div class="grupo-formulario">
                         <label for="nome-completo">Nome Completo</label>
@@ -39,22 +41,22 @@
                             <input type="tel" id="celular" name="celular" placeholder="(00) 90000-0000" required>
                         </div>
                     </div>
-                </section>
-
+                </section> -->
+                <!-- SEÇÃO ENDEREÇO  -->
                 <section class="secao-formulario">
                     <h2>2. Endereço de Entrega</h2>
                     <div class="grupo-formulario">
-                        <label for="cep">CEP</label>
-                        <input type="text" id="cep" name="cep" placeholder="00000-000" required>
+                        <label for="cep" class="form-label">CEP</label>
+                        <input type="text" id="cep" name="cep" class="form-label" placeholder="00000-000" onblur="buscarEndereco()" required>
                     </div>
                     <div class="grupo-formulario">
                         <label for="endereco">Logradouro (Rua, Avenida...)</label>
-                        <input type="text" id="endereco" name="endereco" placeholder="Ex: Av. Brasil" required>
+                        <input type="text" id="endereco" name="endereco"  placeholder="Ex: Av. Brasil"  onblur="buscarEndereco()" required>
                     </div>
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
                             <label for="numero">Número</label>
-                            <input type="text" id="numero" name="numero" placeholder="123" required>
+                            <input type="text" id="numero" name="numero" placeholder="123"  required>
                         </div>
                         <div class="grupo-formulario">
                             <label for="complemento">Complemento (Opcional)</label>
@@ -76,7 +78,7 @@
                         </div>
                     </div>
                 </section>
-
+                <!-- SEÇÃO  PAGAMENTO -->
                 <section class="secao-formulario">
                     <h2>3. Pagamento</h2>
                     <div class="metodo-pagamento">
