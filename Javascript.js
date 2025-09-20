@@ -26,10 +26,7 @@ async function buscarEndereco() {
     document.getElementById("cidade").value   = endereco.localidade || "";
     document.getElementById("estado").value   = endereco.uf         || ""; // <- uf, não estado
 
-    // Se quiser juntar tudo num único input, remova as linhas acima e use esta:
-    // document.getElementById('endereco').value =
-    //   `Rua: ${endereco.logradouro}, Bairro: ${endereco.bairro}, Cidade: ${endereco.localidade}`;
-
+    
   } catch (erro) {
     console.error(erro);
     alert("ERRO AO BUSCAR");
