@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Minimalista</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+
+    <main class="container">
+        <div class="form-content">
+            <header>
+                <h1>Finalizar Compra</h1>
+                <p>Preencha seus dados para concluir o pedido.</p>
+            </header>
+
+            <form id="checkout-form">
+                <section class="form-section">
+                    <h2>1. Contato e Identificação</h2>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullname">Nome Completo</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Seu nome como no documento" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cpf">CPF</label>
+                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Celular</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(00) 90000-0000" required>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2>2. Endereço de Entrega</h2>
+                    <div class="form-group">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" name="cep" placeholder="00000-000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Logradouro (Rua, Avenida...)</label>
+                        <input type="text" id="address" name="address" placeholder="Ex: Av. Brasil" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="number">Número</label>
+                            <input type="text" id="number" name="number" placeholder="123" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="complement">Complemento (Opcional)</label>
+                            <input type="text" id="complement" name="complement" placeholder="Apto 4B">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="neighborhood">Bairro</label>
+                        <input type="text" id="neighborhood" name="neighborhood" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">Cidade</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">Estado</label>
+                            <input type="text" id="state" name="state" required>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2>3. Pagamento</h2>
+                    <div class="payment-method">
+                        <p>Selecione a forma de pagamento:</p>
+                        </div>
+                    <div class="form-group">
+                        <label for="card-number">Número do Cartão</label>
+                        <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-name">Nome Impresso no Cartão</label>
+                        <input type="text" id="card-name" name="card-name" placeholder="NOME COMPLETO" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="card-expiry">Validade (MM/AA)</label>
+                            <input type="text" id="card-expiry" name="card-expiry" placeholder="12/28" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-cvv">CVV</label>
+                            <input type="text" id="card-cvv" name="card-cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                </section>
+
+                <button type="submit" class="cta-button">Finalizar Pagamento</button>
+            </form>
+        </div>
+
+        <aside class="order-summary">
+            <h2>Resumo do Pedido</h2>
+            <div class="summary-items">
+                <div class="summary-item">
+                    <span class="item-name">Produto Minimalista Moderno</span>
+                    <span class="item-price">R$ 180,00</span>
+                </div>
+                 <div class="summary-item">
+                    <span class="item-name">Produto Essencial Básico</span>
+                    <span class="item-price">R$ 70,00</span>
+                </div>
+            </div>
+            <div class="summary-total">
+                <div class="summary-line">
+                    <span>Subtotal</span>
+                    <span>R$ 250,00</span>
+                </div>
+                <div class="summary-line">
+                    <span>Frete</span>
+                    <span>R$ 15,00</span>
+                </div>
+                <div class="summary-line total">
+                    <strong>Total</strong>
+                    <strong>R$ 265,00</strong>
+                </div>
+            </div>
+        </aside>
+    </main>
+    
+</body>
+</html>
