@@ -34,7 +34,7 @@
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
                             <label for="cpf">CPF</label>
-                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" onblur="validarCpf" required>
                         </div>
                         <div class="grupo-formulario">
                             <label for="celular">Celular</label>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="grupo-formulario">
                         <label for="endereco">Logradouro (Rua, Avenida...)</label>
-                        <input type="text" id="endereco" name="endereco"  placeholder="Ex: Av. Brasil"  onblur="buscarEndereco()" required>
+                        <input type="text" id="endereco" name="endereco"  placeholder="Ex: Av. Brasil"  required>
                     </div>
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
@@ -107,6 +107,25 @@
                 <button type="submit" class="botao-principal">Finalizar Pagamento</button>
             </form>
         </div>
+
+        <!-- Modal para exibir mensagem de CPF inválido -->
+    <div class="modal fade" id="cpfInvalidoModal" tabindex="-1" aria-labelledby="cpfInvalidoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cpfInvalidoModalLabel">CPF Inválido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    O CPF inserido é inválido. Por favor, verifique e tente novamente.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <aside class="resumo-pedido">
             <h2>Resumo do Pedido</h2>
