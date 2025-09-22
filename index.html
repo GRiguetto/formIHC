@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
+    <title>Formulário</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/style.css">
-    <script src="src/script.js" ></script>
+    <script src="Javascript.js" defer></script>
 </head>
 <body>
 
@@ -17,89 +17,89 @@
             <header>
                 <h1>Finalizar Compra</h1>
                 <p>Preencha seus dados para concluir o pedido.</p>
-            </header> 
-            <!-- SEÇÃO CADASTRO DO CLIENTE -->
-            <form id="checkout-formulario">
+            </header>
+            <form id="checkout-formulario" novalidate>
                 <section class="secao-formulario">
                     <h2>1. Contato e Identificação</h2>
                     <div class="grupo-formulario">
                         <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required aria-required="true>
-                         <div id="emailSuggestions" class="emailSuggestions"></div> 
+                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required aria-required="true" aria-describedby="email-erro">
+                        <span id="email-erro" class="mensagem-erro" role="alert"></span>
+                        <div id="emailSuggestions" class="emailSuggestions"></div>
                     </div>
                     <div class="grupo-formulario">
                         <label for="nome-completo">Nome Completo</label>
-                        <input type="text" id="nome-completo" name="nome-completo" placeholder="Seu nome como no documento" required aria-required="true>
+                        <input type="text" id="nome-completo" name="nome-completo" placeholder="Seu nome como no documento" required aria-required="true">
                     </div>
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
                             <label for="cpf">CPF</label>
-                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" onblur="validarCpf" required aria-required="true>
+                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" onblur="validarCpf()" required aria-required="true" aria-describedby="cpf-erro">
+                            <span id="cpf-erro" class="mensagem-erro" role="alert"></span>
                         </div>
                         <div class="grupo-formulario">
                             <label for="celular">Celular</label>
-                            <input type="tel" id="celular" name="celular" placeholder="(00) 90000-0000" required>
+                            <input type="tel" id="celular" name="celular" placeholder="(00) 90000-0000" required aria-required="true">
                         </div>
                     </div>
                 </section>
-                <!-- SEÇÃO ENDEREÇO  -->
                 <section class="secao-formulario">
                     <h2>2. Endereço de Entrega</h2>
                     <div class="grupo-formulario">
                         <label for="cep" class="form-label">CEP</label>
-                        <input type="text" id="cep" name="cep" class="form-label" placeholder="00000-000" onblur="buscarEndereco()" required>
+                        <input type="text" id="cep" name="cep" class="form-label" placeholder="00000-000" onblur="buscarEndereco()" required aria-required="true" aria-describedby="cep-erro">
+                        <span id="cep-erro" class="mensagem-erro" role="alert"></span>
                     </div>
                     <div class="grupo-formulario">
                         <label for="endereco">Logradouro (Rua, Avenida...)</label>
-                        <input type="text" id="endereco" name="endereco"  placeholder="Ex: Av. Brasil"  required aria-required="true>
+                        <input type="text" id="endereco" name="endereco" placeholder="Ex: Av. Brasil" required aria-required="true">
                     </div>
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
                             <label for="numero">Número</label>
-                            <input type="text" id="numero" name="numero" placeholder="123"  required aria-required="true>
+                            <input type="text" id="numero" name="numero" placeholder="123" required aria-required="true">
                         </div>
                         <div class="grupo-formulario">
                             <label for="complemento">Complemento (Opcional)</label>
                             <input type="text" id="complemento" name="complemento" placeholder="Apto 4B">
                         </div>
                     </div>
-                     <div class="grupo-formulario">
+                    <div class="grupo-formulario">
                         <label for="bairro">Bairro</label>
-                        <input type="text" id="bairro" name="bairro" required aria-required="true>
+                        <input type="text" id="bairro" name="bairro" required aria-required="true">
                     </div>
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
                             <label for="cidade">Cidade</label>
-                            <input type="text" id="cidade" name="cidade" required aria-required="true>
+                            <input type="text" id="cidade" name="cidade" required aria-required="true">
                         </div>
                         <div class="grupo-formulario">
                             <label for="estado">Estado</label>
-                            <input type="text" id="estado" name="estado" required aria-required="true>
+                            <input type="text" id="estado" name="estado" required aria-required="true">
                         </div>
                     </div>
                 </section>
-                <!-- SEÇÃO  PAGAMENTO -->
                 <section class="secao-formulario">
                     <h2>3. Pagamento</h2>
                     <div class="metodo-pagamento">
                         <p>Selecione a forma de pagamento:</p>
-                        </div>
+                    </div>
                     <div class="grupo-formulario">
                         <label for="numero-cartao">Número do Cartão</label>
-                        <input type="text" id="numero-cartao" name="numero-cartao" placeholder="0000 0000 0000 0000" required aria="true">
+                        <input type="text" id="numero-cartao" name="numero-cartao" placeholder="0000 0000 0000 0000" required aria-required="true">
                     </div>
                     <div class="grupo-formulario">
                         <label for="nome-cartao">Nome Impresso no Cartão</label>
-                        <input type="text" id="nome-cartao" name="nome-cartao" placeholder="NOME COMPLETO" required aria="true">
+                        <input type="text" id="nome-cartao" name="nome-cartao" placeholder="NOME COMPLETO" required aria-required="true">
                     </div>
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
                             <label for="validade-cartao">Validade (MM/AA)</label>
-                            <input type="text" id="validade-cartao" name="validade-cartao" placeholder="12/28" required aria="true">
+                            <input type="text" id="validade-cartao" name="validade-cartao" placeholder="12/28" required aria-required="true">
                         </div>
                         <div class="grupo-formulario">
                             <label for="cvv-cartao">CVV</label>
-                            <input type="text" id="cvv-cartao" name="cvv-cartao" placeholder="123" required aria="true">
+                            <input type="text" id="cvv-cartao" name="cvv-cartao" placeholder="123" required aria-required="true">
                         </div>
                     </div>
                 </section>
@@ -107,26 +107,7 @@
                 <button type="submit" class="botao-principal">Finalizar Pagamento</button>
             </form>
         </div>
-
-        <!-- Modal para exibir mensagem de CPF inválido -->
-    <div class="modal fade" id="cpfInvalidoModal" tabindex="-1" aria-labelledby="cpfInvalidoModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="cpfInvalidoModalLabel">CPF Inválido</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    O CPF inserido é inválido. Por favor, verifique e tente novamente.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+        
         <aside class="resumo-pedido">
             <h2>Resumo do Pedido</h2>
             <div class="itens-resumo">
@@ -155,6 +136,6 @@
             </div>
         </aside>
     </main>
-    
+
 </body>
 </html>
