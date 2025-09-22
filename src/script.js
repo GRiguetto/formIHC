@@ -1,78 +1,91 @@
 // Função assíncrona que será chamada quando o campo CEP perder o foco
 async function buscarEndereco() {
-  const cep = document.getElementById('cep').value.replace(/\D/g, '');
+    const cepInput = document.getElementById('cep');
+    const cepErro = document.getElementById('cep-erro');
+    const cep = cepInput.value.replace(/\D/g, '');
 
-  if (cep.length !== 8) {
-    alert("CEP INVÁLIDO");
-    return;
-  }
+    // Limpa erros anteriores
+    cepErro.textContent = '';
+    cepInput.setAttribute('aria-invalid', 'false');
 
-  try {
-    const resposta = await fetch(`https://viacep.com.br/ws/${cep}/json/`); // <- barra no final
-    if (!resposta.ok) {
-      alert("ERRO AO CONSULTAR");
-      return;
+    if (cep.length !== 8) {
+        cepErro.textContent = "CEP inválido. Deve conter 8 dígitos.";
+        cepInput.setAttribute('aria-invalid', 'true');
+        return;
     }
 
-    const endereco = await resposta.json();
-    if (endereco.erro) {
-      alert("CEP não encontrado");
-      return;
+    try {
+        const resposta = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        if (!resposta.ok) {
+            cepErro.textContent = "Erro ao consultar o serviço de CEP.";
+            cepInput.setAttribute('aria-invalid', 'true');
+            return;
+        }
+
+        const endereco = await resposta.json();
+        if (endereco.erro) {
+            cepErro.textContent = "CEP não encontrado.";
+            cepInput.setAttribute('aria-invalid', 'true');
+            return;
+        }
+
+        // Preenche cada input corretamente
+        document.getElementById("endereco").value = endereco.logradouro || "";
+        document.getElementById("bairro").value = endereco.bairro || "";
+        document.getElementById("cidade").value = endereco.localidade || "";
+        document.getElementById("estado").value = endereco.uf || "";
+
+    } catch (erro) {
+        console.error(erro);
+        cepErro.textContent = "Erro na busca pelo CEP. Tente novamente.";
+        cepInput.setAttribute('aria-invalid', 'true');
     }
-
-    // Preenche cada input corretamente
-    document.getElementById("endereco").value = endereco.logradouro || "";
-    document.getElementById("bairro").value   = endereco.bairro     || "";
-    document.getElementById("cidade").value   = endereco.localidade || "";
-    document.getElementById("estado").value   = endereco.uf         || ""; // <- uf, não estado
-
-    
-  } catch (erro) {
-    console.error(erro);
-    alert("ERRO AO BUSCAR");
-  }
 }
 
-function validarCpf()
-{
-    cpf = document.getElementById('cpf').value.replace(/[^\d]+/g,'')
-    if(cpf.length !== 11)
-        {
-           new bootstrap.Modal(document.getElementById('cpfInvalidoModal')).show()
-            return
-        }
- 
-        //calculo do primeiro digito
-        let soma= 0
+function validarCpf() {
+    const cpfInput = document.getElementById('cpf');
+    const cpfErro = document.getElementById('cpf-erro');
+    const cpf = cpfInput.value.replace(/[^\d]+/g, '');
 
-        //multiplica cada digito por um peso descrescente
-        for(let i = 1; i <=9; i++)
-        {
-            soma += parseInt(cpf.substring(i-1,i))*(11-i)
-        }
-        //Calcula o resto da divisao por 11
-        let resto = (soma*10)%11
-        if(resto === 10 || resto === 11 ) resto = 0
+    // Limpa erros anteriores
+    cpfErro.textContent = '';
+    cpfInput.setAttribute('aria-invalid', 'false');
 
-        //verifica se o resto é diferente do primeiro digito
-        if(resto !== parseInt(cpf.substring(9,10)))
-            {
-                alert("Digite um CPF valido!")
-                return false
-            }
-        
-            //calculo do segundo digito por um peso descrescente
-            soma = 0 
-            for(let i = 1; i <= 10; i++)
-                {
-                    soma += parseInt(cpf.substring(i-1,i)*(12- i))
-                }
-            resto = (soma*10) % 11
-            if (resto === 10 || resto === 11) resto = 0
+    if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) { // Verifica se tem 11 dígitos e se não são todos iguais
+        cpfErro.textContent = "CPF inválido. Verifique os dados digitados.";
+        cpfInput.setAttribute('aria-invalid', 'true');
+        return false;
+    }
 
-            if(resto !== parseInt(cpf.substring(10,11)))
-                {
-                    alert ("Digite um cpf valido")
-                    return false
-                }
+    // Validação dos dígitos verificadores
+    let soma = 0;
+    let resto;
+
+    // Cálculo do primeiro dígito
+    for (let i = 1; i <= 9; i++) {
+        soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.substring(9, 10))) {
+        cpfErro.textContent = "CPF inválido.";
+        cpfInput.setAttribute('aria-invalid', 'true');
+        return false;
+    }
+
+    // Cálculo do segundo dígito
+    soma = 0;
+    for (let i = 1; i <= 10; i++) {
+        soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) resto = 0;
+    if (resto !== parseInt(cpf.substring(10, 11))) {
+        cpfErro.textContent = "CPF inválido.";
+        cpfInput.setAttribute('aria-invalid', 'true');
+        return false;
+    }
+
+    // Se passou por tudo, o CPF é válido
+    return true;
 }
