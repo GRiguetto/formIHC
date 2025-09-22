@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/style.css">
-    <script src="src/script.js" defer></script>
 </head>
 <body>
+    <a href="#checkout-formulario" class="skip-link">Pular para o formulário</a>
 
     <main class="container">
         <div class="conteudo-formulario">
@@ -36,7 +36,7 @@
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
                             <label for="cpf">CPF</label>
-                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" onblur="validarCpf()" required aria-required="true" autocomplete="cpf" aria-describedby="cpf-erro">
+                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required aria-required="true" autocomplete="cpf" aria-describedby="cpf-erro">
                             <span id="cpf-erro" class="mensagem-erro" role="alert"></span>
                         </div>
                         <div class="grupo-formulario">
@@ -146,5 +146,7 @@
         </aside>
     </main>
 
+    <script src="https://unpkg.com/imask"></script>
+    <script src="src/script.js"></script>
 </body>
 </html>

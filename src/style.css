@@ -1,7 +1,8 @@
 /* 1. Configurações Globais e Variáveis */
 :root {
-    --cor-primaria: #007bff; /* Azul para botões e foco */
-    --cor-erro: #dc3545; /* Vermelho para mensagens de erro */
+    --cor-primaria: #007bff;
+    --cor-erro: #dc3545;
+    --cor-sucesso: #198754; /* Nova cor para feedback de sucesso */
     --cor-texto: #333;
     --cor-texto-secundario: #666;
     --cor-fundo: #f9f9f9;
@@ -23,53 +24,47 @@ body {
     line-height: 1.6;
 }
 
+/* Estilo para o Skip Link */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -999;
+}
+
+.skip-link:focus, .skip-link:active {
+    color: #fff;
+    background-color: var(--cor-primaria);
+    left: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+    overflow: auto;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 999;
+}
+
 /* 2. Layout Principal */
 .container {
     display: grid;
-    grid-template-columns: 1fr; /* Coluna única por padrão (mobile-first) */
+    grid-template-columns: 1fr;
     gap: 48px;
     max-width: 1100px;
     margin: 40px auto;
     padding: 20px;
 }
 
-legend {
-    padding: 0; /* Remove o espaçamento padrão */
-    font-size: 1.25rem; /* Garante que o tamanho seja o mesmo do h2 */
-    font-weight: 600;
-    margin-bottom: 24px;
-}
-
-fieldset {
-    border: none; /* Remove a borda padrão do fieldset */
-    padding: 0;
-    margin: 0;
-}
-
-/* Classe para ocultar elementos visualmente, mas mantê-los para leitores de tela */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-
-/* Layout para telas maiores (desktop) */
 @media (min-width: 992px) {
     .container {
-        grid-template-columns: 2fr 1fr; /* Duas colunas: formulário maior, resumo menor */
+        grid-template-columns: 2fr 1fr;
     }
-    .resumo-pedido {
-        order: 1; /* Garante que o resumo fique na segunda coluna */
-    }
-    .conteudo-formulario {
-        order: 0;
-    }
+    .resumo-pedido { order: 1; }
+    .conteudo-formulario { order: 0; }
 }
 
 header {
@@ -87,32 +82,39 @@ header p {
 }
 
 /* 3. Estilo do Formulário */
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+legend {
+    padding: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
 .secao-formulario {
     margin-bottom: 40px;
     border-top: 1px solid var(--cor-borda);
     padding-top: 24px;
 }
 
-.secao-formulario h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 24px;
-}
-
 .grupo-formulario {
     margin-bottom: 20px;
-    flex-grow: 1; /* Para ocupar espaço na linha-formulario */
+    flex-grow: 1;
 }
 
 .linha-formulario {
     display: flex;
-    flex-direction: column; /* Padrão mobile */
+    flex-direction: column;
     gap: 20px;
 }
 
 @media (min-width: 768px) {
     .linha-formulario {
-        flex-direction: row; /* Lado a lado em telas maiores */
+        flex-direction: row;
     }
 }
 
@@ -133,6 +135,9 @@ input[type="tel"] {
     font-size: 1rem;
     font-family: var(--fonte-familia);
     transition: border-color 0.2s, box-shadow 0.2s;
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem 1rem;
 }
 
 input[type="text"]:focus,
@@ -143,21 +148,36 @@ input[type="tel"]:focus {
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
-/* Estilo para campos inválidos */
 input[aria-invalid="true"] {
     border-color: var(--cor-erro);
     box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
 }
 
-/* Estilo para a mensagem de erro */
+/* Estilo para campos válidos */
+input.valido {
+    border-color: var(--cor-sucesso);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+}
+
 .mensagem-erro {
     color: var(--cor-erro);
     font-size: 0.8rem;
     margin-top: 4px;
-    display: block; /* Para garantir que ocupe espaço */
-    min-height: 1.2em; /* Evita que o layout "pule" quando a mensagem aparece */
+    display: block;
+    min-height: 1.2em;
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
 
 /* 4. Resumo do Pedido */
 .resumo-pedido {
@@ -165,7 +185,7 @@ input[aria-invalid="true"] {
     padding: 24px;
     border-radius: 12px;
     border: 1px solid var(--cor-borda);
-    height: fit-content; /* Para que a caixa não se estique desnecessariamente */
+    height: fit-content;
 }
 
 .resumo-pedido h2 {
