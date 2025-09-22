@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Compra</title>
+    <title>Formulário Acessível</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -30,7 +30,8 @@
                     </div>
                     <div class="grupo-formulario">
                         <label for="nome-completo">Nome Completo</label>
-                        <input type="text" id="nome-completo" name="nome-completo" placeholder="Seu nome como no documento" required aria-required="true" autocomplete="name">
+                        <input type="text" id="nome-completo" name="nome-completo" placeholder="Seu nome como no documento" required aria-required="true" autocomplete="name" aria-describedby="nome-completo-erro">
+                        <span id="nome-completo-erro" class="mensagem-erro" role="alert"></span>
                     </div>
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
@@ -40,7 +41,8 @@
                         </div>
                         <div class="grupo-formulario">
                             <label for="celular">Celular</label>
-                            <input type="tel" id="celular" name="celular" placeholder="(00) 90000-0000" required aria-required="true" autocomplete="tel">
+                            <input type="tel" id="celular" name="celular" placeholder="(00) 90000-0000" required aria-required="true" autocomplete="tel" aria-describedby="celular-erro">
+                            <span id="celular-erro" class="mensagem-erro" role="alert"></span>
                         </div>
                     </div>
                 </fieldset>
@@ -53,12 +55,14 @@
                     </div>
                     <div class="grupo-formulario">
                         <label for="endereco">Logradouro (Rua, Avenida...)</label>
-                        <input type="text" id="endereco" name="endereco" placeholder="Ex: Av. Brasil" required aria-required="true" autocomplete="street-address">
+                        <input type="text" id="endereco" name="endereco" placeholder="Ex: Av. Brasil" required aria-required="true" autocomplete="street-address" aria-describedby="endereco-erro">
+                         <span id="endereco-erro" class="mensagem-erro" role="alert"></span>
                     </div>
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
                             <label for="numero">Número</label>
-                            <input type="text" id="numero" name="numero" placeholder="123" required aria-required="true" autocomplete="address-line2">
+                            <input type="text" id="numero" name="numero" placeholder="123" required aria-required="true" autocomplete="address-line2" aria-describedby="numero-erro">
+                            <span id="numero-erro" class="mensagem-erro" role="alert"></span>
                         </div>
                         <div class="grupo-formulario">
                             <label for="complemento">Complemento (Opcional)</label>
@@ -67,16 +71,19 @@
                     </div>
                     <div class="grupo-formulario">
                         <label for="bairro">Bairro</label>
-                        <input type="text" id="bairro" name="bairro" required aria-required="true" autocomplete="address-level2">
+                        <input type="text" id="bairro" name="bairro" required aria-required="true" autocomplete="address-level2" aria-describedby="bairro-erro">
+                        <span id="bairro-erro" class="mensagem-erro" role="alert"></span>
                     </div>
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
                             <label for="cidade">Cidade</label>
-                            <input type="text" id="cidade" name="cidade" required aria-required="true" autocomplete="address-level1">
+                            <input type="text" id="cidade" name="cidade" required aria-required="true" autocomplete="address-level1" aria-describedby="cidade-erro">
+                            <span id="cidade-erro" class="mensagem-erro" role="alert"></span>
                         </div>
                         <div class="grupo-formulario">
                             <label for="estado">Estado</label>
-                            <input type="text" id="estado" name="estado" required aria-required="true" autocomplete="address-level1">
+                            <input type="text" id="estado" name="estado" required aria-required="true" autocomplete="address-level1" aria-describedby="estado-erro">
+                            <span id="estado-erro" class="mensagem-erro" role="alert"></span>
                         </div>
                     </div>
                 </fieldset>
@@ -84,20 +91,24 @@
                     <legend><h2>3. Pagamento</h2></legend>
                     <div class="grupo-formulario">
                         <label for="numero-cartao">Número do Cartão</label>
-                        <input type="text" id="numero-cartao" name="numero-cartao" placeholder="0000 0000 0000 0000" required aria-required="true" autocomplete="cc-number">
+                        <input type="text" id="numero-cartao" name="numero-cartao" placeholder="0000 0000 0000 0000" required aria-required="true" autocomplete="cc-number" aria-describedby="numero-cartao-erro">
+                        <span id="numero-cartao-erro" class="mensagem-erro" role="alert"></span>
                     </div>
                     <div class="grupo-formulario">
                         <label for="nome-cartao">Nome Impresso no Cartão</label>
-                        <input type="text" id="nome-cartao" name="nome-cartao" placeholder="NOME COMPLETO" required aria-required="true" autocomplete="cc-name">
+                        <input type="text" id="nome-cartao" name="nome-cartao" placeholder="NOME COMPLETO" required aria-required="true" autocomplete="cc-name" aria-describedby="nome-cartao-erro">
+                        <span id="nome-cartao-erro" class="mensagem-erro" role="alert"></span>
                     </div>
                     <div class="linha-formulario">
                         <div class="grupo-formulario">
                             <label for="validade-cartao">Validade (MM/AA)</label>
-                            <input type="text" id="validade-cartao" name="validade-cartao" placeholder="12/28" required aria-required="true" autocomplete="cc-exp">
+                            <input type="text" id="validade-cartao" name="validade-cartao" placeholder="12/28" required aria-required="true" autocomplete="cc-exp" aria-describedby="validade-cartao-erro">
+                            <span id="validade-cartao-erro" class="mensagem-erro" role="alert"></span>
                         </div>
                         <div class="grupo-formulario">
                             <label for="cvv-cartao">CVV</label>
-                            <input type="text" id="cvv-cartao" name="cvv-cartao" placeholder="123" required aria-required="true" autocomplete="cc-csc">
+                            <input type="text" id="cvv-cartao" name="cvv-cartao" placeholder="123" required aria-required="true" autocomplete="cc-csc" aria-describedby="cvv-cartao-erro">
+                            <span id="cvv-cartao-erro" class="mensagem-erro" role="alert"></span>
                         </div>
                     </div>
                 </fieldset>
@@ -106,7 +117,7 @@
             </form>
         </div>
 
-         <aside class="resumo-pedido">
+        <aside class="resumo-pedido">
             <h2>Resumo do Pedido</h2>
             <div class="itens-resumo">
                 <div class="item-resumo">
